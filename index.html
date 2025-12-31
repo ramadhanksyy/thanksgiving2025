@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Express - Premium Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Dancing+Script:wght@600;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --machine-gradient: linear-gradient(160deg, #ffafbd 0%, #ffc3a0 100%);
+            --paper-color: #fefcfb;
+            --accent-pink: #ff85a1;
+            --bg-pastel: #fff0f3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #ffe0e6 0%, #fff5f7 50%, #ffe0e6 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            background-color: var(--bg-pastel);
+            background-image: 
+                radial-gradient(#ffcad4 0.8px, transparent 0.8px),
+                linear-gradient(rgba(255, 182, 193, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 182, 193, 0.1) 1px, transparent 1px);
+            background-size: 24px 24px, 40px 40px, 40px 40px;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            -webkit-tap-highlight-color: transparent;
+            position: relative;
+        }
+
+        /* Aesthetic Background Effects */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 133, 161, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 107, 138, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 197, 212, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        body.printing-active::before {
+            opacity: 1;
+        }
+
+        body.printing-active {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%) !important;
+            transition: background 1s ease;
+        }
+
+        /* Animated Particles Background */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        body.printing-active .particles-container {
+            opacity: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: floatParticle 8s infinite linear;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) translateX(10px) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(10vh) translateX(-10px) scale(1);
+            }
+            100% {
+                transform: translateY(0) translateX(0) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Aurora Effect */
+        .aurora-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+        }
+
+        body.printing-active .aurora-effect {
+            opacity: 1;
+        }
+
+        .aurora {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(45deg,
+                transparent 30%,
+                rgba(255, 133, 161, 0.1) 40%,
+                rgba(255, 107, 138, 0.2) 50%,
+                rgba(147, 51, 234, 0.1) 60%,
+                transparent 70%);
+            animation: auroraFlow 15s infinite linear;
+        }
+
+        @keyframes auroraFlow {
+            0% {
+                transform: translateX(-50%) translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateX(0%) translateY(-20px) rotate(1deg);
+            }
+            100% {
+                transform: translateX(-50%) translateY(0) rotate(0deg);
+            }
+        }
+
+        /* Stars Background */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 4;
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+
+        body.printing-active .stars-container {
+            opacity: 1;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 133, 161, 0.3);
+            font-size: 20px;
+            animation: float-up 8s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float-up {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 215, 0, 0.6);
+            border-radius: 50%;
+            animation: sparkle 3s linear infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 60%, rgba(255, 192, 203, 0.15) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .receipt-font { font-family: 'Courier Prime', monospace; }
+        .romantic-font { font-family: 'Dancing Script', cursive; }
+
+        .app-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 15px;
+            transition: opacity 0.8s ease;
+            z-index: 10;
+        }
+
+        #thanks-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 1s ease;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #thanks-screen.visible { opacity: 1; visibility: visible; }
+
+        .machine-outer {
+            width: 90%;
+            position: relative;
+            z-index: 30;
+        }
+
+        .machine-body {
+            background: var(--machine-gradient);
+            border-radius: 25px 25px 15px 15px;
+            box-shadow: 
+                0 10px 25px rgba(255, 175, 189, 0.4),
+                inset 0 -4px 0 rgba(0,0,0,0.1),
+                inset 0 4px 0 rgba(255,255,255,0.4);
+            padding: 16px;
+            border: 4px solid #ffffff;
+            position: relative;
+        }
+
+        .dot-btn {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+            opacity: 0.6;
+        }
+        .dot-btn.blink { animation: blink 1.5s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+
+        .machine-screen {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+        }
+
+        .slot-container {
+            position: relative;
+            width: 100%;
+            height: 14px;
+            background: #3d1c2a;
+            border-radius: 8px;
+            z-index: 40;
+            margin-top: 12px;
+            box-shadow: inset 0 4px 6px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .ticket-scroll-container {
+            width: 82%;
+            flex-grow: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            mask-image: linear-gradient(to bottom, black 94%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 94%, transparent 100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.6s ease;
+            margin-top: -8px;
+            padding-bottom: 100px;
+            scroll-behavior: smooth;
+        }
+
+        .ticket-scroll-container::-webkit-scrollbar { display: none; }
+
+        #ticket-paper {
+            width: 100%;
+            background-color: var(--paper-color);
+            transform: translateY(-100%); 
+            transition: transform 3s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            z-index: 10;
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.08));
+        }
+
+        #ticket-paper::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: radial-gradient(circle, transparent, transparent 50%, var(--paper-color) 50%, var(--paper-color) 100%) 0 -5px / 10px 10px repeat-x;
+        }
+
+        body.active .ticket-scroll-container { opacity: 1; visibility: visible; }
+        body.active #ticket-paper { transform: translateY(0); }
+
+        .paper-content {
+            padding: 30px 18px;
+            color: #4a4a4a;
+            font-size: 13px;
+        }
+
+        .gallery-frame {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: #ffffff;
+            border: 1px solid #f0f0f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-frame:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 133, 161, 0.15);
+        }
+
+        /* Love Burst Effect */
+        .love-burst {
+            position: absolute;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .love-particle {
+            position: absolute;
+            font-size: 20px;
+            animation: loveBurst 1s ease-out forwards;
+        }
+
+        @keyframes loveBurst {
+            0% {
+                transform: translate(0, 0) scale(0);
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Confetti Effect */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 200;
+            overflow: hidden;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--confetti-color);
+            animation: confettiFall 3s linear forwards;
+        }
+
+        /* Dynamic Island Notification */
+        .dynamic-island {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: linear-gradient(135deg, 
+                rgba(17, 24, 39, 0.95) 0%, 
+                rgba(31, 41, 55, 0.95) 50%, 
+                rgba(17, 24, 39, 0.95) 100%);
+            border-radius: 30px;
+            padding: 16px 24px;
+            min-width: 320px;
+            max-width: 90vw;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                0 2px 16px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .dynamic-island::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.1), 
+                transparent);
+            transition: left 0.8s ease;
+        }
+
+        .dynamic-island.show::before {
+            left: 100%;
+        }
+
+        .dynamic-island.show {
+            transform: translateX(-50%) translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        .dynamic-island.hide {
+            transform: translateX(-50%) translateY(-100px) scale(0.95);
+            opacity: 0;
+        }
+
+        /* Angry Dynamic Island */
+        .dynamic-island.angry {
+            background: linear-gradient(135deg, 
+                rgba(220, 38, 38, 0.95) 0%, 
+                rgba(153, 27, 27, 0.95) 50%, 
+                rgba(220, 38, 38, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: angryPulse 0.6s ease-in-out infinite alternate;
+        }
+
+        @keyframes angryPulse {
+            0% { 
+                transform: translateX(-50%) translateY(-100px) scale(0.95);
+                box-shadow: 
+                    0 20px 60px rgba(220, 38, 38, 0.4),
+                    0 8px 32px rgba(220, 38, 38, 0.3),
+                    0 2px 16px rgba(220, 38, 38, 0.2);
+            }
+            100% { 
+                transform: translateX(-50%) translateY(-100px) scale(0.98);
+                box-shadow: 
+                    0 25px 70px rgba(220, 38, 38, 0.5),
+                    0 10px 40px rgba(220, 38, 38, 0.4),
+                    0 4px 20px rgba(220, 38, 38, 0.3);
+            }
+        }
+
+        .dynamic-island.angry.show {
+            animation: angryShakeShow 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+
+        @keyframes angryShakeShow {
+            0% { 
+                transform: translateX(-50%) translateY(-100px) scale(0.8) rotate(0deg); 
+            }
+            20% { 
+                transform: translateX(-52%) translateY(-80px) scale(1.05) rotate(-3deg); 
+            }
+            40% { 
+                transform: translateX(-48%) translateY(-40px) scale(0.95) rotate(2deg); 
+            }
+            60% { 
+                transform: translateX(-51%) translateY(-10px) scale(1.02) rotate(-1deg); 
+            }
+            80% { 
+                transform: translateX(-49%) translateY(5px) scale(0.98) rotate(0.5deg); 
+            }
+            100% { 
+                transform: translateX(-50%) translateY(0) scale(1) rotate(0deg); 
+            }
+        }
+
+        .dynamic-island.angry .island-icon {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            animation: angryIconPulse 1s infinite;
+        }
+
+        @keyframes angryIconPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+            }
+            50% { 
+                transform: scale(1.3);
+                box-shadow: 0 0 30px rgba(251, 191, 36, 0.8);
+            }
+        }
+
+        .island-content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: white;
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+
+        .island-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #ff85a1, #ff6b8a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            animation: iconFloat 3s ease-in-out infinite;
+            box-shadow: 0 4px 20px rgba(255, 133, 161, 0.4);
+            font-size: 16px;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { 
+                transform: translateY(0) scale(1);
+            }
+            50% { 
+                transform: translateY(-3px) scale(1.05);
+            }
+        }
+
+        .island-text {
+            flex: 1;
+            text-align: left;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .island-close {
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            flex-shrink: 0;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .island-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1) rotate(90deg);
+            opacity: 1;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Angry Confetti */
+        .angry-confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 200;
+            overflow: hidden;
+        }
+
+        .angry-confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--confetti-color);
+            animation: angryConfettiFall 2s linear forwards;
+        }
+
+        @keyframes angryConfettiFall {
+            0% {
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Audio Visualizer */
+        .audio-visualizer {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .visualizer-bar {
+            width: 3px;
+            height: 20px;
+            background: linear-gradient(to top, #ff85a1, #ff6b8a);
+            border-radius: 2px;
+            animation: dance 0.6s ease-in-out infinite;
+            transform-origin: bottom;
+            position: relative;
+            z-index: 11;
+        }
+
+        .visualizer-bar:nth-child(1) { animation-delay: 0s; }
+        .visualizer-bar:nth-child(2) { animation-delay: 0.1s; }
+        .visualizer-bar:nth-child(3) { animation-delay: 0.2s; }
+        .visualizer-bar:nth-child(4) { animation-delay: 0.3s; }
+        .visualizer-bar:nth-child(5) { animation-delay: 0.4s; }
+        .visualizer-bar:nth-child(6) { animation-delay: 0.5s; }
+        .visualizer-bar:nth-child(7) { animation-delay: 0.6s; }
+
+        @keyframes dance {
+            0%, 100% { transform: scaleY(0.3); }
+            50% { transform: scaleY(1); }
+        }
+
+        .like-btn {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(255, 133, 161, 0.3);
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
+            border: 1px solid #fff5f7;
+        }
+
+        .like-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: #e2e8f0; /* Default gray-ish */
+            transition: fill 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .like-btn.liked {
+            transform: scale(1.1);
+        }
+
+        .like-btn.liked svg {
+            fill: #ff85a1;
+            animation: heartBeat 0.4s ease-out;
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.4); }
+            100% { transform: scale(1); }
+        }
+
+        .premium-btn {
+            background: #ffffff;
+            color: #ff85a1;
+            font-weight: 800;
+            padding: 10px 24px;
+            border-radius: 15px;
+            box-shadow: 0 4px 0 #f0f0f0;
+            transition: all 0.2s;
+            border: 2px solid #fff;
+            font-size: 11px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .premium-btn.visualizer-active {
+            background: transparent;
+            border: 2px solid #ff85a1;
+            box-shadow: 0 4px 0 #ffcad4;
+            color: transparent;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .tear-action-btn {
+            background: #ff85a1;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 14px;
+            box-shadow: 0 10px 20px rgba(255, 133, 161, 0.3);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 3px solid white;
+        }
+
+        .heart-particle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 50;
+            animation: floatUp 2.5s ease-out forwards;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(0); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(-200px) rotate(90deg) scale(1.5); opacity: 0; }
+        }
+
+        @keyframes tearDown {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(110vh); opacity: 0; }
+        }
+
+        .tearing-off {
+            animation: tearDown 0.8s cubic-bezier(0.5, 0, 0.75, 0) forwards !important;
+        }
+
+        .message-box {
+            background: rgba(255, 133, 161, 0.05);
+            border: 1px dashed #ffafbd;
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .premium-message-box {
+            background: #ffffff;
+            border: 2px solid #ff85a1;
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 10px;
+            position: relative;
+            box-shadow: 0 6px 15px rgba(255, 133, 161, 0.15);
+            background-image: linear-gradient(rgba(255, 240, 243, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 240, 243, 0.5) 1px, transparent 1px);
+            background-size: 10px 10px;
+        }
+
+        .premium-message-box::before {
+            content: '👑';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        .special-border-box {
+            background: #fff;
+            border: 2px solid #ff85a1;
+            border-radius: 16px;
+            padding: 18px;
+            margin-top: 10px;
+            position: relative;
+            box-shadow: 0 8px 0 #ffcad4;
+            overflow: hidden;
+        }
+
+        .special-border-box::before {
+            content: '✨';
+            position: absolute;
+            top: 5px;
+            right: 8px;
+            font-size: 12px;
+        }
+
+        .music-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+        }
+        .music-bar {
+            height: 2px;
+            background: #ffe0e6;
+            width: 100%;
+            margin-top: 4px;
+            position: relative;
+            border-radius: 2px;
+        }
+        .music-progress {
+            position: absolute;
+            height: 100%;
+            background: #ff85a1;
+            border-radius: 2px;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scaleX(1); }
+            50% { opacity: 0.6; transform: scaleX(0.98); }
+        }
+
+        .fav-heart {
+            color: #ff85a1;
+            animation: pulse 1s infinite;
+            display: inline-block;
+        }
+        
+        .music-player {
+            margin-top: 15px;
+        }
+        
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .play-btn {
+            width: 40px;
+            height: 40px;
+            background: #ff85a1;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 133, 161, 0.3);
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(255, 133, 161, 0.4);
+        }
+        
+        .play-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+        
+        .progress-container {
+            flex: 1;
+        }
+        
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4px;
+            font-size: 8px;
+            color: #666;
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .volume-btn {
+            width: 24px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+        
+        .volume-btn:hover {
+            opacity: 1;
+        }
+        
+        .volume-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: #666;
+        }
+        
+        .volume-slider {
+            width: 60px;
+            height: 4px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #ffe0e6;
+            border-radius: 2px;
+            outline: none;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background: #ff85a1;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .volume-slider::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            background: #ff85a1;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-overlay"></div>
+    
+    <!-- Animated Background -->
+    <div class="animated-bg" id="animatedBg"></div>
+
+    <div id="thanks-screen">
+        <div class="text-6xl mb-4">✨</div>
+        <div class="romantic-font text-pink-500 text-5xl mb-4">Terima Kasih!</div>
+        <div class="text-pink-400 font-bold text-base mb-2">Istriku Sayang, Meisya ❤️</div>
+        <p class="text-pink-300 max-w-xs mx-auto mb-10 text-xs px-6">
+            Semoga kejutan kecil ini membuat harimu lebih berwarna. Aku mencintaimu selamanya!
+        </p>
+        <button onclick="location.reload()" class="premium-btn">
+            Ulangi Keajaiban ✨
+        </button>
+    </div>
+
+    <div class="particles-container" id="particlesContainer"></div>
+    <div class="aurora-effect" id="auroraEffect">
+        <div class="aurora"></div>
+    </div>
+    <div class="stars-container" id="starsContainer"></div>
+
+    <div class="app-wrapper" id="main-app">
+        <div id="welcome-ui" class="text-center mb-4">
+            <h1 class="romantic-font text-pink-500 text-4xl font-bold drop-shadow-sm">Love Express</h1>
+            <p class="text-pink-300 text-[9px] tracking-[0.2em] font-bold uppercase">Kios Kenangan Premium</p>
+        </div>
+
+        <div class="machine-outer">
+            <div class="machine-body">
+                <div class="flex gap-1.5 mb-2.5">
+                    <div class="dot-btn bg-red-400 blink"></div>
+                    <div class="dot-btn bg-yellow-400"></div>
+                    <div class="dot-btn bg-green-400"></div>
+                </div>
+
+                <div class="machine-screen text-center">
+                    <div id="screen-text" class="text-[9px] font-black text-white uppercase tracking-widest">Siap Mencetak...</div>
+                </div>
+
+                <div class="flex justify-center">
+                    <button onclick="printTicket()" id="main-btn" class="premium-btn uppercase">
+                        Cetak Surat ❤️
+                    </button>
+                </div>
+
+                <div class="slot-container"></div>
+            </div>
+        </div>
+
+        <div class="ticket-scroll-container" id="scroll-area">
+            <div id="ticket-paper">
+                <div class="paper-content receipt-font">
+                    <div class="text-center mb-6">
+                        <div class="text-2xl mb-1">🎀</div>
+                        <h2 class="text-sm font-bold uppercase tracking-[0.3em] text-pink-600">Surat Sayang</h2>
+                        <div class="h-[1px] w-full border-b border-dotted border-pink-200 my-4"></div>
+                        <div class="flex justify-between text-[8px] font-bold opacity-40 uppercase">
+                            <span>REG: #001-MEISYA</span>
+                            <span>YEAR: 2025 ❤️</span>
+                        </div>
+                        <div class="h-[1px] w-full border-b border-dotted border-pink-200 my-4"></div>
+                    </div>
+
+                    <div class="mb-8">
+                        <p class="font-bold text-pink-400 mb-3 tracking-widest uppercase text-[10px]">/ Untuk Perempuan Sempurnaku</p>
+                        <div class="premium-message-box">
+                            <div class="space-y-4 text-justify text-[11px] leading-relaxed">
+                                <p>Haiiii perempuan sempurnanya aku !! Happy new year istriku sayanggg &lt;3 !!</p>
+                                <p>perempuan kecilku sayanggg, akhirnya kita bisa merayakan lagi tahun baru ini bersama sama ya sayanggg !! akuuu bahagiaaa banget akhirnya bisa aku bisa merasakan cinta yang bener bener tulus dari seorang perempuan yang sangat sempurna dihidup aku, yaitu kamu <strong>Meisya Nurul Dzihni</strong> &lt;3 !!</p>
+                                <p>terima kasih ya kamu sudaaa mau menerima aku apa adanyaa. kamuuu sudaa mau menerima kurang lebihnya aku dan segala kesederhanaan yang aku miliki. aku beruntung bisa memiliki kamuu sayangg...</p>
+                                <p>aku akan selaluuu bersama kamuuu, menepati janjii aku dan menikahi kamuuu untuk selamanya sehidup semati bersama kamu sayanggg !!</p>
+                                <p>I'll always be here for you, together, and FOREVER BABYY !!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Galeri 1 -->
+                    <div class="mb-8">
+                        <p class="font-bold text-pink-400 mb-3 tracking-widest uppercase text-[10px]">/ My Favourite Picts!</p>
+                        <div class="space-y-6">
+                            <div class="gallery-item">
+                                <div class="gallery-frame">
+                                    <img src="assets/b4jc0grh.png" alt="Betapa lucunya kamuuu..." style="width: 100%; height: 100%; object-fit: cover;">
+                                    <div class="like-btn" onclick="toggleLike(this, event)">
+                                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                                    </div>
+                                </div>
+                                <p class="text-[8px] text-center italic opacity-60">"Betapa lucunya kamuuu..."</p>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-frame">
+                                    <img src="assets/IMG-20240513-WA0027.jpg" alt="Sempurnanya kamu sayanggg..." style="width: 100%; height: 100%; object-fit: cover;">
+                                    <div class="like-btn" onclick="toggleLike(this, event)">
+                                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                                    </div>
+                                </div>
+                                <p class="text-[8px] text-center italic opacity-60">"Sempurnanya kamu sayanggg..."</p>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-frame">
+                                    <img src="assets/IMG-20240812-WA0023.jpg" alt="Moment paling bahagiaa..." style="width: 100%; height: 100%; object-fit: cover;">
+                                    <div class="like-btn" onclick="toggleLike(this, event)">
+                                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                                    </div>
+                                </div>
+                                <p class="text-[8px] text-center italic opacity-60">"Moment paling bahagiaa..."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <p class="font-bold text-pink-400 mb-3 tracking-widest uppercase text-[10px]">/ Most Listened Songs</p>
+                        <div class="message-box">
+                            <div class="space-y-4">
+                                <div class="music-item">
+                                    <div class="music-info w-full">
+                                        <div class="text-[10px] font-bold uppercase">Watch - Billie Eilish</div>
+                                        <div class="music-bar"><div class="music-progress" style="width: 95%"></div></div>
+                                    </div>
+                                </div>
+                                <div class="music-item">
+                                    <div class="music-info w-full">
+                                        <div class="text-[10px] font-bold uppercase">Home - Edith Whiskers</div>
+                                        <div class="music-bar"><div class="music-progress" style="width: 85%"></div></div>
+                                    </div>
+                                </div>
+                                <div class="music-item">
+                                    <div class="music-info w-full">
+                                        <div class="text-[10px] font-bold uppercase">Perayaan Mati Rasa - Umay Shahab, Natania Karin</div>
+                                        <div class="music-bar"><div class="music-progress" style="width: 75%"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <p class="font-bold text-pink-400 mb-3 tracking-widest uppercase text-[10px]">/ Our Favourite Song</p>
+                        <div class="special-border-box">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="text-[11px] font-black uppercase text-pink-600">Rewrite The Stars</div>
+                                <span class="fav-heart text-xs">❤️</span>
+                            </div>
+                            <div class="text-[9px] italic text-gray-400 mb-3">"No one can rewrite the stars..."</div>
+                            
+                            <!-- Music Player -->
+                            <div class="music-player">
+                                <audio id="rewriteStarsAudio" preload="auto">
+                                    <source src="music/rewrite-the-stars.mp3" type="audio/mpeg">
+                                </audio>
+                                
+                                <div class="player-controls">
+                                    <button id="playPauseBtn" onclick="togglePlayPause()" class="play-btn">
+                                        <svg id="playIcon" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                        <svg id="pauseIcon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                                        </svg>
+                                    </button>
+                                    
+                                    <div class="progress-container">
+                                        <div class="music-bar" id="progressBar">
+                                            <div class="music-progress" id="progressFill" style="width: 0%"></div>
+                                        </div>
+                                        <div class="time-display">
+                                            <span id="currentTime">0:00</span>
+                                            <span id="totalTime">3:42</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="volume-control">
+                                    <button onclick="toggleMute()" id="muteBtn" class="volume-btn">
+                                        <svg id="volumeIcon" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                                        </svg>
+                                        <svg id="muteIcon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                                            <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+                                        </svg>
+                                    </button>
+                                    <input type="range" id="volumeSlider" min="0" max="100" value="70" onchange="changeVolume(this.value)" class="volume-slider">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SESI Our Random Picts 2025 -->
+                    <div class="mb-8">
+                        <p class="font-bold text-pink-400 mb-3 tracking-widest uppercase text-[10px]">/ Our Random Picts 2025</p>
+                        <div class="space-y-6">
+                            <div class="gallery-item">
+                                <div class="gallery-frame">
+                                    <img src="assets/randompick/kuprw4a8.png" alt="Random moment #1" style="width: 100%; height: 100%; object-fit: cover;">
+                                    <div class="like-btn" onclick="toggleLike(this, event)">
+                                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                                    </div>
+                                </div>
+                                <p class="text-[8px] text-center italic opacity-60">"Random moment #1"</p>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-frame">
+                                    <img src="assets/randompick/Screenshot 2025-09-29 191826.png" alt="Random moment #2" style="width: 100%; height: 100%; object-fit: cover;">
+                                    <div class="like-btn" onclick="toggleLike(this, event)">
+                                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                                    </div>
+                                </div>
+                                <p class="text-[8px] text-center italic opacity-60">"Random moment #2"</p>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-frame">
+                                    <img src="assets/randompick/Screenshot 2025-12-31 201816.png" alt="Random moment #3" style="width: 100%; height: 100%; object-fit: cover;">
+                                    <div class="like-btn" onclick="toggleLike(this, event)">
+                                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                                    </div>
+                                </div>
+                                <p class="text-[8px] text-center italic opacity-60">"Random moment #3"</p>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-frame">
+                                    <img src="assets/randompick/Screenshot 2025-12-31 201922.png" alt="Random moment #4" style="width: 100%; height: 100%; object-fit: cover;">
+                                    <div class="like-btn" onclick="toggleLike(this, event)">
+                                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                                    </div>
+                                </div>
+                                <p class="text-[8px] text-center italic opacity-60">"Random moment #4"</p>
+                            </div>
+                            <div class="gallery-item">
+                                <div class="gallery-frame">
+                                    <img src="assets/randompick/Gemini_Generated_Image_dk0me3dk0me3dk0m.png" alt="Random moment #5" style="width: 100%; height: 100%; object-fit: cover;">
+                                    <div class="like-btn" onclick="toggleLike(this, event)">
+                                        <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                                    </div>
+                                </div>
+                                <p class="text-[8px] text-center italic opacity-60">"Random moment #5"</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <p class="font-bold text-pink-400 mb-3 tracking-widest uppercase text-[10px]">/ Wish & Hope</p>
+                        <div class="message-box">
+                            <div class="space-y-4 text-[10px] leading-relaxed italic text-gray-600">
+                                <p class="text-center">"Harapanku di tahun 2025 ini sederhana saja, Meisya..."</p>
+                                <p>Aku ingin kita terus bertumbuh bersama, melewati setiap tawa dan tangis dengan tangan yang tetap saling menggenggam erat. Aku berharap setiap pagi yang kamu lalui selalu dimulai dengan senyuman, dan setiap malammu ditutup dengan rasa tenang karena tahu ada aku yang selalu menjagamu.</p>
+                                <p>Semoga cita-cita kita satu per satu menjadi nyata, dan rumah yang kita impikan segera terwujud dengan penuh keberkahan. Terima kasih telah menjadi rumah tempatku pulang, menjadi pendengar terbaikku, dan menjadi alasan utamaku untuk terus berjuang.</p>
+                                <p class="font-bold text-pink-500 text-center mt-2">Mari kita lukis lebih banyak warna di tahun ini, Istriku sayang. ✨</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="h-[1px] w-full border-b border-dotted border-pink-200 my-6"></div>
+
+                    <div class="text-center pb-16">
+                        <p class="romantic-font text-2xl text-pink-400 mb-8">Mencintaimu, Selamanya.</p>
+                        
+                        <div id="tear-button-container" class="opacity-0 translate-y-4 transition-all duration-700">
+                            <button onclick="tearOffTicket()" class="tear-action-btn">
+                                <span>Ambil Struk</span>
+                                <span>✂️</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="bgMusic" preload="auto">
+        <source src="music/perayaan-mati-rasa.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="moneySound" preload="auto">
+        <source src="music/money-counting-machine-sfx-406495.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="paperRipSound" preload="auto">
+        <source src="music/paper-rip-fast-252617.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="notifSound" preload="auto">
+        <source src="music/notif-1.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="wrongSound" preload="auto">
+        <source src="music/wrong-47985.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        let isPrinting = false;
+        let isTearing = false;
+        let buttonShown = false;
+        let musicPlayed = false;
+        let isPlaying = false;
+        let isMuted = false;
+        let bgMusicPaused = false;
+        let bgMusicCurrentTime = 0;
+        let favouritePicsLiked = 0; // Track likes for "My Favourite Picts"
+        let notificationShown = false; // Prevent duplicate notifications
+        let angryNotificationShown = false; // Prevent angry notification duplicates
+        let threeLikesAchieved = false; // Track if 3 likes were ever achieved
+        let visualizerInterval = null; // Store visualizer interval
+
+        // Audio Visualizer Function
+        function createAudioVisualizer() {
+            const visualizer = document.createElement('div');
+            visualizer.className = 'audio-visualizer';
+            
+            // Create 7 bars
+            for (let i = 0; i < 7; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'visualizer-bar';
+                visualizer.appendChild(bar);
+            }
+            
+            return visualizer;
+        }
+
+        function startVisualizer(btn) {
+            // Clear any existing visualizer
+            if (visualizerInterval) {
+                clearInterval(visualizerInterval);
+            }
+            
+            // Add visualizer-active class to hide button completely
+            btn.classList.add('visualizer-active');
+            
+            // Get button position for visualizer placement
+            const btnRect = btn.getBoundingClientRect();
+            
+            // Create visualizer and position it exactly where button was
+            const visualizer = createAudioVisualizer();
+            visualizer.style.position = 'fixed';
+            visualizer.style.top = btnRect.top + 'px';
+            visualizer.style.left = btnRect.left + 'px';
+            visualizer.style.width = btnRect.width + 'px';
+            visualizer.style.height = btnRect.height + 'px';
+            visualizer.style.display = 'flex';
+            visualizer.style.alignItems = 'center';
+            visualizer.style.justifyContent = 'center';
+            
+            document.body.appendChild(visualizer);
+            
+            // Start animation
+            visualizerInterval = setInterval(() => {
+                const bars = visualizer.querySelectorAll('.visualizer-bar');
+                bars.forEach(bar => {
+                    const randomHeight = Math.random() * 15 + 5; // 5px to 20px
+                    bar.style.height = randomHeight + 'px';
+                });
+            }, 200);
+            
+            // Store reference for cleanup
+            visualizer.dataset.managed = 'true';
+        }
+
+        function stopVisualizer(btn) {
+            if (visualizerInterval) {
+                clearInterval(visualizerInterval);
+                visualizerInterval = null;
+            }
+            
+            // Remove visualizer-active class to restore button
+            btn.classList.remove('visualizer-active');
+            
+            // Remove visualizer from body
+            const visualizer = document.querySelector('.audio-visualizer[data-managed="true"]');
+            if (visualizer) {
+                visualizer.remove();
+            }
+            
+            // Restore button text
+            btn.innerText = 'SELESAI!';
+        }
+
+        function printTicket() {
+            if (isPrinting || isTearing) return;
+            isPrinting = true;
+            const btn = document.getElementById('main-btn');
+            const screen = document.getElementById('screen-text');
+            const bgMusic = document.getElementById('bgMusic');
+            const moneySound = document.getElementById('moneySound');
+            
+            btn.innerText = "SEDANG MENCETAK...";
+            screen.innerText = "PRINTING LOVE...";
+
+            // Activate aesthetic background effects
+            document.body.classList.add('printing-active');
+            createBackgroundEffects();
+
+            // Play money counting sound immediately
+            moneySound.play().catch(e => console.log('Money sound play failed:', e));
+
+            // Play background music when print button is clicked
+            if (!musicPlayed) {
+                setTimeout(() => {
+                    bgMusic.play().catch(e => console.log('Audio play failed:', e));
+                    musicPlayed = true;
+                }, 1000); // Start background music after money sound
+            }
+
+            // Create confetti effect
+            createConfetti();
+
+            const heartInterval = setInterval(() => {
+                const heart = document.createElement('div');
+                heart.innerHTML = ['❤️','💖','🌸','✨'][Math.floor(Math.random()*4)];
+                heart.className = 'heart-particle';
+                heart.style.left = (Math.random() * 80 + 10) + '%';
+                heart.style.top = '30%';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 2500);
+            }, 150);
+
+            setTimeout(() => {
+                document.body.classList.add('active');
+                screen.innerText = "BACA SAMPAI AKHIR";
+                clearInterval(heartInterval);
+                isPrinting = false;
+                
+                // Start audio visualizer instead of showing "SELESAI!"
+                startVisualizer(btn);
+                
+                // Stop visualizer when music ends
+                bgMusic.addEventListener('ended', () => {
+                    stopVisualizer(btn);
+                    // Deactivate background effects when music ends
+                    setTimeout(() => {
+                        document.body.classList.remove('printing-active');
+                        removeBackgroundEffects();
+                    }, 2000);
+                }, { once: true });
+            }, 1000);
+        }
+
+        // Background Effects Functions
+        function createBackgroundEffects() {
+            createParticles();
+            createStars();
+        }
+
+        function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            container.innerHTML = ''; // Clear existing particles
+            
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (8 + Math.random() * 4) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        function createStars() {
+            const container = document.getElementById('starsContainer');
+            container.innerHTML = ''; // Clear existing stars
+            
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (2 + Math.random() * 2) + 's';
+                container.appendChild(star);
+            }
+        }
+
+        function removeBackgroundEffects() {
+            const particlesContainer = document.getElementById('particlesContainer');
+            const starsContainer = document.getElementById('starsContainer');
+            
+            if (particlesContainer) particlesContainer.innerHTML = '';
+            if (starsContainer) starsContainer.innerHTML = '';
+        }
+
+        // Love Burst Effect Function
+        function createLoveBurst(x, y) {
+            const burst = document.createElement('div');
+            burst.className = 'love-burst';
+            burst.style.left = x + 'px';
+            burst.style.top = y + 'px';
+            
+            const loveEmojis = ['❤️', '💕', '💖', '💗', '💝', '💞', '💓'];
+            const particleCount = 12;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'love-particle';
+                particle.innerHTML = loveEmojis[Math.floor(Math.random() * loveEmojis.length)];
+                
+                const angle = (360 / particleCount) * i;
+                const distance = 80 + Math.random() * 40;
+                const tx = Math.cos(angle * Math.PI / 180) * distance;
+                const ty = Math.sin(angle * Math.PI / 180) * distance;
+                
+                particle.style.setProperty('--tx', tx + 'px');
+                particle.style.setProperty('--ty', ty + 'px');
+                
+                burst.appendChild(particle);
+            }
+            
+            document.body.appendChild(burst);
+            setTimeout(() => burst.remove(), 1000);
+        }
+
+        // Confetti Effect Function
+        function createConfetti() {
+            const container = document.createElement('div');
+            container.className = 'confetti-container';
+            
+            const colors = ['#ff85a1', '#ff6b8a', '#ffa5c0', '#ffb3d0', '#ffc0db', '#ffcad4'];
+            const confettiCount = 50;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.setProperty('--confetti-color', colors[Math.floor(Math.random() * colors.length)]);
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+                confetti.style.top = '-20px'; // Start from above viewport
+                
+                container.appendChild(confetti);
+            }
+            
+            document.body.appendChild(container);
+            setTimeout(() => container.remove(), 4000);
+        }
+
+        // Dynamic Island Notification Function
+        function showDynamicIsland() {
+            if (notificationShown) return; // Prevent duplicate notifications
+            
+            const island = document.createElement('div');
+            island.className = 'dynamic-island';
+            island.innerHTML = `
+                <div class="island-content">
+                    <div class="island-icon">💕</div>
+                    <div class="island-text">
+                        Istriiii aku emang yang palingg sempurnaa !! timaacii sayanggg, selain kamu mencintai akuu, kamu juga harus mencintai diri kamu sendiri ya cantikkkkk. i love youuuuu &lt;3!!
+                    </div>
+                    <div class="island-close" onclick="closeDynamicIsland(this)">✕</div>
+                </div>
+            `;
+            
+            document.body.appendChild(island);
+            notificationShown = true;
+            
+            // Play notification sound
+            const notifSound = document.getElementById('notifSound');
+            notifSound.play().catch(e => console.log('Notification sound play failed:', e));
+            
+            // Trigger animation
+            setTimeout(() => {
+                island.classList.add('show');
+            }, 100);
+            
+            // Auto close after 10 seconds
+            setTimeout(() => {
+                closeDynamicIsland(island.querySelector('.island-close'));
+            }, 10000);
+        }
+
+        function closeDynamicIsland(closeBtn) {
+            const island = closeBtn.closest('.dynamic-island');
+            island.classList.remove('show');
+            island.classList.add('hide');
+            
+            setTimeout(() => {
+                island.remove();
+                notificationShown = false;
+            }, 400);
+        }
+
+        // Angry Dynamic Island Notification Function
+        function showAngryDynamicIsland() {
+            if (angryNotificationShown) return; // Prevent duplicate notifications
+            
+            const island = document.createElement('div');
+            island.className = 'dynamic-island angry';
+            island.innerHTML = `
+                <div class="island-content">
+                    <div class="island-icon">😠</div>
+                    <div class="island-text">
+                        Heh, jangan di unlike istrikuu sayanggg !! kamuu sempurnaaa, aku jujurr sama kamuuuuu. KAMU ADALAH PEREMPUAN YANG PALING SEMPURNA SAYANGGGGG !!
+                    </div>
+                    <div class="island-close" onclick="closeAngryDynamicIsland(this)">✕</div>
+                </div>
+            `;
+            
+            document.body.appendChild(island);
+            angryNotificationShown = true;
+            
+            // Play wrong sound
+            const wrongSound = document.getElementById('wrongSound');
+            wrongSound.play().catch(e => console.log('Wrong sound play failed:', e));
+            
+            // Create angry confetti
+            createAngryConfetti(island);
+            
+            // Trigger animation
+            setTimeout(() => {
+                island.classList.add('show');
+            }, 100);
+            
+            // Auto close after 8 seconds
+            setTimeout(() => {
+                closeAngryDynamicIsland(island.querySelector('.island-close'));
+            }, 8000);
+        }
+
+        function closeAngryDynamicIsland(closeBtn) {
+            const island = closeBtn.closest('.dynamic-island');
+            island.classList.remove('show');
+            island.classList.add('hide');
+            
+            setTimeout(() => {
+                island.remove();
+                angryNotificationShown = false;
+            }, 400);
+        }
+
+        // Angry Confetti Effect Function
+        function createAngryConfetti(island) {
+            const container = document.createElement('div');
+            container.className = 'angry-confetti-container';
+            
+            const angryEmojis = ['😠', '😡', '💢', '👊', '😤', '💔'];
+            const confettiCount = 20;
+            
+            // Get island position for confetti origin
+            const islandRect = island.getBoundingClientRect();
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'angry-confetti';
+                confetti.innerHTML = angryEmojis[Math.floor(Math.random() * angryEmojis.length)];
+                confetti.style.fontSize = (12 + Math.random() * 8) + 'px';
+                
+                // Position confetti around the island
+                const startX = islandRect.left + islandRect.width / 2;
+                const startY = islandRect.top + islandRect.height / 2;
+                
+                confetti.style.left = startX + 'px';
+                confetti.style.top = startY + 'px';
+                confetti.style.setProperty('--confetti-color', '#dc2626');
+                
+                container.appendChild(confetti);
+            }
+            
+            document.body.appendChild(container);
+            setTimeout(() => container.remove(), 2000);
+        }
+
+        // Fungsi toggle like
+        function toggleLike(element, event) {
+            event.stopPropagation(); // Mencegah scroll yang tidak diinginkan
+            const wasLiked = element.classList.contains('liked');
+            element.classList.toggle('liked');
+            
+            // Check if this is in "My Favourite Picts" section
+            const favouritePictsSection = element.closest('.mb-8');
+            const sectionTitle = favouritePictsSection?.querySelector('p');
+            const isFavouritePicts = sectionTitle?.textContent.includes('My Favourite Picts!');
+            
+            if (element.classList.contains('liked') && !wasLiked) {
+                // Get position for love burst effect
+                const rect = element.getBoundingClientRect();
+                const x = rect.left + rect.width / 2;
+                const y = rect.top + rect.height / 2;
+                
+                // Create spectacular love burst
+                createLoveBurst(x, y);
+                
+                // Tambahkan efek partikel kecil saat dilike
+                for(let i=0; i<3; i++) {
+                    const spark = document.createElement('div');
+                    spark.innerText = '✨';
+                    spark.style.position = 'absolute';
+                    spark.style.left = '50%';
+                    spark.style.top = '0';
+                    spark.style.fontSize = '10px';
+                    spark.className = 'heart-particle';
+                    element.appendChild(spark);
+                    setTimeout(() => spark.remove(), 1000);
+                }
+                
+                // Track likes for "My Favourite Picts" section
+                if (isFavouritePicts) {
+                    favouritePicsLiked++;
+                    if (favouritePicsLiked === 3 && !notificationShown) {
+                        threeLikesAchieved = true;
+                        setTimeout(() => {
+                            showDynamicIsland();
+                        }, 500);
+                    }
+                }
+            } else if (!element.classList.contains('liked') && wasLiked) {
+                // Unlike - decrement counter if it was in favourite picts
+                if (isFavouritePicts && favouritePicsLiked > 0) {
+                    favouritePicsLiked--;
+                    
+                    // Trigger angry notification if 3 likes were achieved and now unlike happens
+                    if (threeLikesAchieved && !angryNotificationShown) {
+                        setTimeout(() => {
+                            showAngryDynamicIsland();
+                        }, 300);
+                    }
+                }
+            }
+        }
+
+        const scrollArea = document.getElementById('scroll-area');
+        scrollArea.addEventListener('scroll', () => {
+            if (buttonShown || isPrinting || !document.body.classList.contains('active')) return;
+            const threshold = scrollArea.scrollHeight - scrollArea.clientHeight - 100;
+            if (scrollArea.scrollTop >= threshold) {
+                buttonShown = true;
+                const container = document.getElementById('tear-button-container');
+                container.classList.remove('opacity-0', 'translate-y-4');
+                container.classList.add('opacity-100', 'translate-y-0');
+            }
+        });
+
+        function tearOffTicket() {
+            if (isTearing || isPrinting) return;
+            isTearing = true;
+            
+            // Stop visualizer if active
+            const btn = document.getElementById('main-btn');
+            if (visualizerInterval) {
+                stopVisualizer(btn);
+            }
+            
+            // Remove printing-active class and effects
+            document.body.classList.remove('printing-active');
+            removeBackgroundEffects();
+            
+            const paper = document.getElementById('ticket-paper');
+            const mainApp = document.getElementById('main-app');
+            const thanksScreen = document.getElementById('thanks-screen');
+            const bgMusic = document.getElementById('bgMusic');
+            const paperRipSound = document.getElementById('paperRipSound');
+            
+            // Stop background music
+            if (bgMusic) {
+                bgMusic.pause();
+                bgMusic.currentTime = 0;
+            }
+            
+            // Play paper rip sound
+            paperRipSound.play().catch(e => console.log('Paper rip sound play failed:', e));
+            
+            // Add tearing animation
+            paper.classList.add('tearing-off');
+            
+            setTimeout(() => {
+                mainApp.style.opacity = "0";
+                setTimeout(() => {
+                    mainApp.style.display = "none";
+                    thanksScreen.classList.add('visible');
+                }, 600);
+            }, 800);
+        }
+
+        // Music Player Functions
+        const audio = document.getElementById('rewriteStarsAudio');
+        const playBtn = document.getElementById('playPauseBtn');
+        const playIcon = document.getElementById('playIcon');
+        const pauseIcon = document.getElementById('pauseIcon');
+        const progressFill = document.getElementById('progressFill');
+        const currentTimeEl = document.getElementById('currentTime');
+        const muteBtn = document.getElementById('muteBtn');
+        const volumeIcon = document.getElementById('volumeIcon');
+        const muteIcon = document.getElementById('muteIcon');
+        const volumeSlider = document.getElementById('volumeSlider');
+
+        function togglePlayPause() {
+            const bgMusic = document.getElementById('bgMusic');
+            
+            if (isPlaying) {
+                // Pause Rewrite The Stars
+                audio.pause();
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+                isPlaying = false;
+                
+                // Resume background music if it was playing
+                if (bgMusicPaused && musicPlayed) {
+                    // Fade in background music
+                    let fadeVolume = 0;
+                    const fadeInInterval = setInterval(() => {
+                        fadeVolume += 0.1;
+                        if (fadeVolume >= 0.7) {
+                            fadeVolume = 0.7;
+                            clearInterval(fadeInInterval);
+                        }
+                        bgMusic.volume = fadeVolume;
+                    }, 100);
+                    
+                    bgMusic.currentTime = bgMusicCurrentTime;
+                    bgMusic.play().catch(e => console.log('BG music resume failed:', e));
+                    bgMusicPaused = false;
+                }
+            } else {
+                // Play Rewrite The Stars
+                audio.play().catch(e => console.log('Audio play failed:', e));
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+                isPlaying = true;
+                
+                // Fade out and pause background music if it's playing
+                if (musicPlayed && !bgMusic.paused && !bgMusicPaused) {
+                    bgMusicCurrentTime = bgMusic.currentTime;
+                    let fadeVolume = bgMusic.volume;
+                    
+                    const fadeOutInterval = setInterval(() => {
+                        fadeVolume -= 0.1;
+                        if (fadeVolume <= 0) {
+                            fadeVolume = 0;
+                            clearInterval(fadeOutInterval);
+                            bgMusic.pause();
+                            bgMusicPaused = true;
+                        }
+                        bgMusic.volume = fadeVolume;
+                    }, 100);
+                }
+            }
+        }
+
+        function toggleMute() {
+            if (isMuted) {
+                audio.muted = false;
+                volumeIcon.style.display = 'block';
+                muteIcon.style.display = 'none';
+                isMuted = false;
+            } else {
+                audio.muted = true;
+                volumeIcon.style.display = 'none';
+                muteIcon.style.display = 'block';
+                isMuted = true;
+            }
+        }
+
+        function changeVolume(value) {
+            audio.volume = value / 100;
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Update progress bar
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                progressFill.style.width = progress + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            }
+        });
+
+        // Handle audio end
+        audio.addEventListener('ended', () => {
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+            isPlaying = false;
+            progressFill.style.width = '0%';
+            currentTimeEl.textContent = '0:00';
+            
+            // Auto-resume background music when Rewrite The Stars ends
+            const bgMusic = document.getElementById('bgMusic');
+            if (bgMusicPaused && musicPlayed) {
+                // Fade in background music
+                let fadeVolume = 0;
+                const fadeInInterval = setInterval(() => {
+                    fadeVolume += 0.1;
+                    if (fadeVolume >= 0.7) {
+                        fadeVolume = 0.7;
+                        clearInterval(fadeInInterval);
+                    }
+                    bgMusic.volume = fadeVolume;
+                }, 100);
+                
+                bgMusic.currentTime = bgMusicCurrentTime;
+                bgMusic.play().catch(e => console.log('BG music auto-resume failed:', e));
+                bgMusicPaused = false;
+            }
+        });
+
+        // Initialize volume
+        audio.volume = 0.7;
+
+        function initAnimatedBackground() {
+            const bg = document.getElementById('animatedBg');
+            
+            // Create floating hearts
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = ['❤️', '💕', '💖', '💗'][Math.floor(Math.random() * 4)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                bg.appendChild(heart);
+                
+                // Remove heart after animation
+                setTimeout(() => heart.remove(), 8000);
+            }, 2000);
+            
+            // Create sparkles
+            setInterval(() => {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+                bg.appendChild(sparkle);
+                
+                // Remove sparkle after animation
+                setTimeout(() => sparkle.remove(), 3000);
+            }, 800);
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initAnimatedBackground();
+        });
+    </script>
+</body>
+</html>
